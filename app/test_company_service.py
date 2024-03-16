@@ -13,6 +13,8 @@ def test_get_all_companies(url: str):
      'industry': 'Electronic Device', 'age': '47'}])
 
 
+
+
 def test_get_company_by_id(url: str):
     res = requests.get(url).json()
     assert(res == {'employees_id': 1, 'name': 'Альфа-Банк',
