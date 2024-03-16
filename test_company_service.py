@@ -15,7 +15,7 @@ def test_get_all_companies(url: str):
 
 def test_get_company_by_id(url: str):
     res = requests.get(url).json()
-    assert(res == {'employees_id': 1, 'name': 'Альфа-Банк',
+    assert(res == {'companies_id': 1, 'name': 'Альфа-Банк',
      'descrption': 'Крупнейшее финансово-кредитное учреждение с универсальным подходом к ведению бизнеса',
      'industry': 'Economy', 'age': '34'})
 
