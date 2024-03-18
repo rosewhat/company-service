@@ -12,7 +12,7 @@ async def create_company(payload: CompanyIn):
         if not is_cast_present(employee_id):
             raise HTTPException(status_code=404, detail=f"Cast with given id:{employee_id} not found")
 
-    company_id = await db_manager.add_anime(payload)
+    company_id = await db_manager.add_company(payload)
     response = {
         'id': company_id,
         **payload.dict()
@@ -26,15 +26,15 @@ async def get_companies():
 
 @company.get('/{id}/', response_model=CompanyOut)
 async def get_company(id: int):
-    anime = await db_manager.get_company(id)
-    if not anime:
+    company = await db_manager.get_company(id)
+    if not company:
         raise HTTPException(status_code=404, detail="Company not found")
-    return anime
+    return company
 
 @company.put('/{id}/', response_model=CompanyOut)
 async def update_company(id: int, payload: CompanyUpdate):
-    anime = await db_manager.get_company(id)
-    if not anime:
+    company = await db_manager.get_company(id)
+    if not company:
         raise HTTPException(status_code=404, detail="Company not found")
 
     update_data = payload.dict(exclude_unset=True)

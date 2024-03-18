@@ -22,7 +22,7 @@ async def delete_company(id: int):
     return await database.execute(query=query)
 
 
-async def update_anime(id: int, payload: CompanyIn):
+async def update_company(id: int, payload: CompanyIn):
     query = (
         companies
         .update()
